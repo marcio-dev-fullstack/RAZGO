@@ -1,27 +1,26 @@
-/* RAZGO - Interatividade */
-if (typeof lucide !== 'undefined') {
+// Iniciar Ícones
+lucide.createIcons();
+
+const menuBtn = document.getElementById('menu-btn');
+const navLinks = document.getElementById('nav-links');
+const overlay = document.getElementById('overlay');
+
+function toggleMenu() {
+    navLinks.classList.toggle('active');
+    overlay.classList.toggle('active');
+    
+    // Alternar ícone entre Menu e X
+    const icon = navLinks.classList.contains('active') ? 'x' : 'menu';
+    menuBtn.innerHTML = `<i data-lucide="${icon}"></i>`;
     lucide.createIcons();
 }
 
-// Animação de revelação ao rolar
-const revealOnScroll = () => {
-    const cards = document.querySelectorAll('.card');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
+menuBtn.addEventListener('click', toggleMenu);
+overlay.addEventListener('click', toggleMenu);
 
-    cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `all 0.6s ease-out ${index % 3 * 0.1}s`;
-        observer.observe(card);
+// Fechar menu ao clicar em qualquer link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        if(navLinks.classList.contains('active')) toggleMenu();
     });
-};
-
-document.addEventListener('DOMContentLoaded', revealOnScroll);
+});
