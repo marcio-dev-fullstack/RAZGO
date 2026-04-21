@@ -308,21 +308,28 @@ body {
 }
 
 /* Footer */
+/* Rodapé com texto branco e destaque verde */
 .footer {
-    padding: 80px 5% 40px;
-    text-align: center;
-    background: #050507;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    margin-top: 50px;
+  padding: 60px 5%;
+  text-align: center;
+  background: #050507; /* Fundo escuro para destacar o branco */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: #ffffff; /* Todo o texto do footer fica branco */
 }
 
-.footer strong span {
-    color: var(--primary);
+.footer strong {
+  color: #ffffff; /* Garante que o 'RAZ' seja branco */
 }
 
 .footer p {
-    color: var(--text-dim);
-    margin-top: 10px;
+  color: #ffffff; /* Garante que o telefone e cidade sejam brancos */
+  margin-top: 10px;
+  opacity: 0.9; /* Deixa o texto levemente mais suave, mas ainda branco */
+}
+
+.footer span {
+  color: #00ff88; /* Mantém apenas o 'GO' em verde */
+  font-weight: 800;
 }
 
 /* Keyframes Animações */
